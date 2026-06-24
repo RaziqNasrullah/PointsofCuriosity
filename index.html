@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Points of Curiosity — Knowledge Log</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="tailwind.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="antialiased">
+
+  <!-- ============ Navigasi: sidebar di desktop, bottom bar di mobile/tablet ============ -->
+  <nav aria-label="Navigasi utama" class="hidden lg:flex lg:flex-col lg:items-center lg:fixed lg:inset-y-0 lg:left-0 lg:w-20 lg:py-8 lg:border-r lg:border-stone-200 lg:bg-white lg:z-30">
+    <a href="index.html" class="mb-10 font-display text-lg text-ink" title="Beranda — Points of Curiosity">PoC</a>
+    <div class="flex flex-col gap-7">
+      <a href="index.html" class="nav-icon" title="Beranda" aria-label="Beranda">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+      </a>
+      <button type="button" id="btn-search-desktop" class="nav-icon" title="Cari catatan" aria-label="Cari catatan">
+        <i data-lucide="search" class="w-5 h-5"></i>
+      </button>
+      <a href="perpustakaan.html" class="nav-icon" title="Perpustakaan" aria-label="Buka perpustakaan buku">
+        <i data-lucide="library" class="w-5 h-5"></i>
+      </a>
+    </div>
+  </nav>
+
+  <nav aria-label="Navigasi utama" class="lg:hidden flex fixed bottom-0 inset-x-0 z-30 justify-around items-center h-16 bg-white border-t border-stone-200">
+    <a href="index.html" class="nav-icon p-2" title="Beranda" aria-label="Beranda">
+      <i data-lucide="book-open" class="w-6 h-6"></i>
+    </a>
+    <button type="button" id="btn-search-mobile" class="nav-icon p-2" title="Cari catatan" aria-label="Cari catatan">
+      <i data-lucide="search" class="w-6 h-6"></i>
+    </button>
+    <a href="perpustakaan.html" class="nav-icon p-2" title="Perpustakaan" aria-label="Buka perpustakaan buku">
+      <i data-lucide="library" class="w-6 h-6"></i>
+    </a>
+  </nav>
+
+  <!-- ============ Konten utama ============ -->
+  <main class="lg:pl-20 pb-24 lg:pb-0 min-h-screen">
+    <div class="max-w-3xl mx-auto px-6 py-12 lg:py-16">
+
+      <header class="mb-10">
+        <h1 class="font-display text-3xl sm:text-4xl text-ink">Points of Curiosity</h1>
+        <p class="mt-2 text-sm text-stone-500">Catatan pertanyaan yang sudah terjawab saat membaca.</p>
+      </header>
+
+      <!-- Search bar, disembunyikan sampai icon search di nav diklik -->
+      <div id="search-wrapper" class="overflow-hidden transition-all duration-300 ease-out" style="max-height: 0px;">
+        <div class="pb-6">
+          <label for="search-input" class="sr-only">Cari catatan</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Cari berdasarkan judul atau kategori..."
+            class="w-full border border-stone-300 rounded-md px-4 py-2.5 text-sm bg-white placeholder:text-stone-400 outline-none"
+          />
+        </div>
+      </div>
+
+      <!-- Toggle mode tampilan -->
+      <div class="flex items-center justify-between mb-6">
+        <p id="result-count" class="text-xs text-stone-400 tracking-wide uppercase" aria-live="polite"></p>
+        <div role="group" aria-label="Pilih mode tampilan" class="inline-flex border border-stone-200 rounded-md overflow-hidden">
+          <button type="button" data-mode="katalog" class="mode-btn">Katalog</button>
+          <button type="button" data-mode="card" class="mode-btn">Card</button>
+        </div>
+      </div>
+
+      <!-- Daftar catatan, dirender oleh JS -->
+      <div id="content-list" class="view-transition" aria-live="polite"></div>
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    /**
+     * ---------------------------------------------------------------------
+     * DATA DUMMY (mode demo)
+     * ---------------------------------------------------------------------
+     * Array ini mensimulasikan bentuk dist/data/katalog.json hasil ekspor
+     * export.js. Dipakai sebagai fallback otomatis kalau fetch('./data/katalog.json')
+     * gagal -- misalnya saat file ini dibuka langsung lewat file:// tanpa
+     * server, atau saat folder dist/data/ belum pernah diekspor.
+     *
+     * Begitu kamu menjalankan `npm run export` dan menaruh folder dist/data/
+     * di sebelah file ini (lalu membukanya lewat server lokal / GitHub Pages),
+     * halaman ini otomatis memakai data ASLI tanpa perlu ubah kode apa pun.
+     * ---------------------------------------------------------------------
+     */
+    const DUMMY_KATALOG = [
+      {
+        id: 8,
+        judul: "Dari Mana Asal Kata 'Kuliah'?",
+        slug: "dari-mana-asal-kata-kuliah",
+        kategori: "Bahasa",
+        tanggal_dibuat: "2026-06-16 19:20:00",
+        ringkasan: "Pertanyaan Kata 'kuliah' kedengarannya bukan asli bahasa Indonesia — dari mana asalnya? Jawaban Singkat 'Kuliah' diserap dari bahasa Arab kulliyah (كلية), yang..."
+      },
+      {
+        id: 7,
+        judul: "Apa Beda Logika Deduktif dan Induktif?",
+        slug: "apa-beda-logika-deduktif-dan-induktif",
+        kategori: "Filsafat",
+        tanggal_dibuat: "2026-06-14 16:40:00",
+        ringkasan: "Pertanyaan Di buku buku filsafat sering disebut 'deduktif' dan 'induktif' — apa bedanya secara praktis? Jawaban Singkat Deduktif : dari premis umum ke kesimpula..."
+      },
+      {
+        id: 6,
+        judul: "Kenapa Langit Berwarna Biru, Bukan Hijau?",
+        slug: "kenapa-langit-berwarna-biru-bukan-hijau",
+        kategori: "Sains",
+        tanggal_dibuat: "2026-06-12 09:05:00",
+        ringkasan: "Pertanyaan Kalau cahaya matahari berisi semua warna, kenapa langit yang kita lihat selalu biru, bukan hijau atau ungu? Jawaban Singkat Ini karena hamburan Rayle..."
+      },
+      {
+        id: 5,
+        judul: "Apa Bedanya Resesi dan Depresi Ekonomi?",
+        slug: "apa-bedanya-resesi-dan-depresi-ekonomi",
+        kategori: "Ekonomi",
+        tanggal_dibuat: "2026-06-10 11:00:00",
+        ringkasan: "Resesi umumnya didefinisikan sebagai penurunan PDB dua kuartal berturut turut. Depresi adalah resesi yang jauh lebih parah, berlangsung lebih lama (bisa bertahu..."
+      },
+      {
+        id: 4,
+        judul: "Kenapa Air Laut Asin tapi Air Hujan Tidak?",
+        slug: "kenapa-air-laut-asin-tapi-air-hujan-tidak",
+        kategori: "Sains",
+        tanggal_dibuat: "2026-06-01 08:45:00",
+        ringkasan: "Air hujan berasal dari penguapan, proses yang meninggalkan garam dan mineral di belakang. Air sungai yang mengalir ke laut membawa mineral dari batuan, dan kare..."
+      },
+      {
+        id: 3,
+        judul: "Asal Mula Sistem Penanggalan Gregorian",
+        slug: "asal-mula-sistem-penanggalan-gregorian",
+        kategori: "Sejarah",
+        tanggal_dibuat: "2026-05-18 20:00:00",
+        ringkasan: "Kalender Gregorian diperkenalkan Paus Gregorius XIII pada 1582 untuk memperbaiki pergeseran kalender Julian terhadap musim semi (equinox). Pergeseran ini terjad..."
+      },
+      {
+        id: 2,
+        judul: "Apa Itu Idempoten dalam Pemrograman?",
+        slug: "apa-itu-idempoten-dalam-pemrograman",
+        kategori: "Teknologi",
+        tanggal_dibuat: "2026-05-10 14:30:00",
+        ringkasan: "Operasi disebut idempoten kalau dijalankan berkali kali hasilnya tetap sama seperti dijalankan sekali. Contoh: PUT /user/1 {name: 'Budi'} idempoten. Contoh buka..."
+      },
+      {
+        id: 1,
+        judul: "Mengapa Kita Lupa Apa yang Baru Dibaca?",
+        slug: "mengapa-kita-lupa-apa-yang-baru-dibaca",
+        kategori: "Psikologi",
+        tanggal_dibuat: "2026-05-02 09:15:00",
+        ringkasan: "Pertanyaan Kenapa otak cenderung membuang detail bacaan padahal baru beberapa jam lalu dibaca? Jawaban Singkat Ini berkaitan dengan kurva lupa Ebbinghaus . Tanp..."
+      }
+    ];
+
+    const state = { data: [], mode: "katalog", query: "" };
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    async function loadKatalog() {
+      try {
+        const res = await fetch("data/katalog.json");
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const json = await res.json();
+        if (!Array.isArray(json)) throw new Error("Format katalog.json tidak sesuai");
+        return json;
+      } catch (err) {
+        console.warn("[POC] Gagal memuat ./data/katalog.json, memakai data contoh (mode demo). Detail:", err.message);
+        return DUMMY_KATALOG;
+      }
+    }
+
+    function formatTanggal(raw) {
+      const d = new Date(String(raw).replace(" ", "T"));
+      if (isNaN(d.getTime())) return raw;
+      const bulan = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+      return `${String(d.getDate()).padStart(2, "0")} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    function escapeHTML(str) {
+      const div = document.createElement("div");
+      div.textContent = String(str ?? "");
+      return div.innerHTML;
+    }
+
+    function getFilteredData() {
+      const q = state.query.trim().toLowerCase();
+      if (!q) return state.data;
+      return state.data.filter(
+        (item) =>
+          item.judul.toLowerCase().includes(q) ||
+          (item.kategori || "").toLowerCase().includes(q)
+      );
+    }
+
+    function emptyStateHTML() {
+      return `
+        <div class="text-center py-16 border border-dashed border-stone-300 rounded-md">
+          <p class="text-sm text-stone-500">Belum ada catatan yang cocok dengan pencarian ini. Coba kata kunci lain.</p>
+        </div>`;
+    }
+
+    function renderKatalog(items) {
+      if (items.length === 0) return emptyStateHTML();
+      return `
+        <ul class="divide-y divide-stone-200">
+          ${items
+            .map(
+              (item) => `
+            <li>
+              <a href="artikel.html#${encodeURIComponent(item.slug)}" class="toc-row">
+                <span class="toc-title">${escapeHTML(item.judul)}</span>
+                <span class="toc-leader"></span>
+                <span class="text-xs text-stone-400 tabular-nums whitespace-nowrap">${formatTanggal(item.tanggal_dibuat)}</span>
+              </a>
+            </li>`
+            )
+            .join("")}
+        </ul>`;
+    }
+
+    function renderCard(items) {
+      if (items.length === 0) return emptyStateHTML();
+      return `
+        <div class="grid gap-4 sm:grid-cols-2">
+          ${items
+            .map(
+              (item) => `
+            <a href="artikel.html#${encodeURIComponent(item.slug)}" class="card-link">
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="tag-pill">${escapeHTML(item.kategori || "Umum")}</span>
+                <span class="text-xs text-stone-400 tabular-nums">${formatTanggal(item.tanggal_dibuat)}</span>
+              </div>
+              <h2 class="font-display text-lg text-ink mb-1.5 leading-snug">${escapeHTML(item.judul)}</h2>
+              <p class="text-sm text-slate-600 line-clamp-2">${escapeHTML(item.ringkasan || "")}</p>
+            </a>`
+            )
+            .join("")}
+        </div>`;
+    }
+
+    function renderContent() {
+      const container = document.getElementById("content-list");
+      const items = getFilteredData();
+      const html = state.mode === "katalog" ? renderKatalog(items) : renderCard(items);
+      document.getElementById("result-count").textContent = `${items.length} catatan`;
+
+      if (reduceMotion) {
+        container.innerHTML = html;
+        return;
+      }
+
+      container.classList.add("view-hidden");
+      setTimeout(() => {
+        container.innerHTML = html;
+        requestAnimationFrame(() => container.classList.remove("view-hidden"));
+      }, 220);
+    }
+
+    function setMode(mode) {
+      state.mode = mode;
+      document.querySelectorAll(".mode-btn").forEach((btn) => {
+        btn.classList.toggle("is-active", btn.dataset.mode === mode);
+      });
+      renderContent();
+    }
+
+    function toggleSearch() {
+      const wrapper = document.getElementById("search-wrapper");
+      const isOpen = wrapper.style.maxHeight !== "0px" && wrapper.style.maxHeight !== "";
+      wrapper.style.maxHeight = isOpen ? "0px" : "80px";
+      if (!isOpen) setTimeout(() => document.getElementById("search-input").focus(), 280);
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      lucide.createIcons();
+
+      document.querySelectorAll(".mode-btn").forEach((btn) => {
+        btn.addEventListener("click", () => setMode(btn.dataset.mode));
+      });
+
+      document.getElementById("btn-search-desktop").addEventListener("click", toggleSearch);
+      document.getElementById("btn-search-mobile").addEventListener("click", toggleSearch);
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.query = e.target.value;
+        renderContent();
+      });
+
+      state.data = await loadKatalog();
+      setMode("katalog");
+
+      if (window.location.hash === "#search") toggleSearch();
+    });
+  </script>
+</body>
+</html>

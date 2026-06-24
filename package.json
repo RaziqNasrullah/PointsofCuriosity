@@ -1,0 +1,23 @@
+{
+  "name": "poc-knowledge-log",
+  "version": "1.0.0",
+  "description": "Skrip ekspor SQLite -> JSON statis untuk Points of Curiosity (POC) Knowledge Log",
+  "main": "export.js",
+  "type": "commonjs",
+  "scripts": {
+    "seed": "node seed.js",
+    "export": "node export.js",
+    "editor": "node server.js",
+    "build:css": "tailwindcss -i ./src/input.css -o ./tailwind.css --minify",
+    "build:css:watch": "tailwindcss -i ./src/input.css -o ./tailwind.css --watch",
+    "deploy": "npm run build:css && npm run export && git add tailwind.css data uploads/buku && git commit -m \"chore: update export\" && git push"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

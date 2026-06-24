@@ -1,0 +1,262 @@
+/* style.css ---------------------------------------------------------------
+   Token desain bersama untuk POC Knowledge Log (dipakai index.html & artikel.html).
+
+   Palet "ledger green" dipilih secara sengaja supaya tidak jatuh ke kombinasi
+   cream-background + serif + terracotta yang sudah terlalu sering dipakai
+   tema "AI-generated editorial". Hijau tinta lebih dekat ke nuansa
+   katalog perpustakaan / kartu indeks, sesuai tema "Points of Curiosity".
+
+   Warna kustom (--accent dkk) ditulis sebagai class CSS biasa di sini,
+   bukan sebagai class arbitrary Tailwind (bg-[var(--accent)]), supaya
+   tidak bergantung pada deteksi class dinamis saat konten di-render lewat
+   JS (innerHTML). Ini lebih aman untuk dipakai produksi di GitHub Pages.
+---------------------------------------------------------------------------- */
+
+:root {
+  --ink: #1c1f1d;            /* teks judul paling gelap */
+  --accent: #2f4a3e;         /* hijau tinta - elemen aktif & link */
+  --accent-strong: #1f342b;  /* hover state / teks di atas accent-soft */
+  --accent-soft: #e7eee9;    /* latar tag kategori */
+  --rule: #e4e1dc;           /* garis pembatas halus */
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  color: #1e293b; /* slate-800 */
+  background-color: #fafaf9; /* stone-50 */
+}
+
+.font-display {
+  font-family: "Merriweather", Georgia, "Times New Roman", serif;
+}
+
+.text-ink { color: var(--ink); }
+.text-accent { color: var(--accent); }
+.link-accent-hover:hover { color: var(--accent); }
+
+/* Badge "Referensi: <buku>" di halaman artikel */
+.buku-ref-badge {
+  border: 1px solid #cdd9d2;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.buku-ref-badge:hover { background: #dbe6e0; }
+
+/* --- Navigasi (sidebar desktop & bottom bar mobile) --- */
+.nav-icon {
+  color: #a8a29e; /* stone-400 */
+  transition: color 200ms ease;
+}
+.nav-icon:hover,
+.nav-icon:focus-visible {
+  color: var(--accent);
+}
+
+/* --- Toggle mode Katalog / Card --- */
+.mode-btn {
+  padding: 0.375rem 0.875rem;
+  font-size: 0.875rem;
+  color: #78716c; /* stone-500 */
+  background: #fff;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.mode-btn:not(:first-child) {
+  border-left: 1px solid var(--rule);
+}
+.mode-btn.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* --- Mode Katalog: daftar isi ala buku fisik --- */
+.toc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.875rem 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 200ms ease;
+}
+.toc-row:hover {
+  background-color: #f5f5f4; /* stone-100 */
+}
+.toc-title {
+  font-family: "Merriweather", Georgia, serif;
+  color: var(--ink);
+  transition: color 200ms ease;
+}
+.toc-row:hover .toc-title {
+  color: var(--accent);
+}
+.toc-leader {
+  flex: 1 1 auto;
+  border-bottom: 1px dotted #c9c6c1;
+  height: 0;
+  align-self: center;
+  margin-bottom: 0.2rem;
+}
+
+/* --- Mode Card --- */
+.card-link {
+  display: block;
+  border: 1px solid var(--rule);
+  border-radius: 0.375rem;
+  background: #fff;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: border-color 200ms ease;
+}
+.card-link:hover {
+  border-color: var(--accent);
+}
+.tag-pill {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.1875rem;
+}
+
+/* Util kecil agar teks kepotong 2 baris (mode Card) */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* --- Transisi fade + slide-up generik saat berpindah mode/halaman --- */
+.view-transition {
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+.view-hidden {
+  opacity: 0;
+  transform: translateY(8px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .view-transition { transition: none !important; }
+}
+
+/* --- Fokus keyboard yang jelas --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+#search-input:focus { border-color: var(--accent); outline: none; }
+
+/* --- Status baca buku --- */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.1875rem;
+  letter-spacing: 0.02em;
+}
+.status-ingin_dibaca { background: #f1f0ee; color: #78716c; }
+.status-sedang_dibaca { background: #fdf2dd; color: #92651a; }
+.status-sudah_dibaca { background: var(--accent-soft); color: var(--accent-strong); }
+
+/* --- Grid card buku (halaman perpustakaan) --- */
+.buku-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 0.375rem;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.buku-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.buku-cover {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: #f1f0ee;
+  display: block;
+}
+.buku-cover-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background: #f1f0ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c9c6c1;
+}
+
+/* --- Halaman detail buku --- */
+.buku-detail-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
+}
+@media (max-width: 639px) {
+  .buku-detail-grid { grid-template-columns: 1fr; }
+}
+.buku-detail-cover {
+  width: 100%;
+  border-radius: 0.375rem;
+  object-fit: cover;
+  aspect-ratio: 2 / 3;
+  background: #f1f0ee;
+}
+.biodata-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.biodata-row dt { color: #78716c; }
+.biodata-row dd { color: var(--ink); }
+
+/* --- Konten markdown di halaman artikel --- */
+.prose-catatan h1,
+.prose-catatan h2,
+.prose-catatan h3 {
+  font-family: "Merriweather", Georgia, serif;
+  color: var(--ink);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+.prose-catatan h1 { font-size: 1.5rem; }
+.prose-catatan h2 { font-size: 1.25rem; }
+.prose-catatan p { margin-bottom: 1em; line-height: 1.75; }
+.prose-catatan ul, .prose-catatan ol { margin: 0 0 1em 1.25rem; line-height: 1.75; }
+.prose-catatan li { margin-bottom: 0.35em; }
+.prose-catatan blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1.25em 0;
+  color: #57534e; /* stone-600 */
+  font-style: italic;
+}
+.prose-catatan code {
+  background: #f1f0ee;
+  padding: 0.1em 0.4em;
+  border-radius: 0.25em;
+  font-size: 0.875em;
+}
+.prose-catatan pre {
+  background: #f1f0ee;
+  padding: 1em;
+  border-radius: 0.375em;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+.prose-catatan a { color: var(--accent); text-decoration: underline; }

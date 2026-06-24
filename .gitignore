@@ -1,0 +1,29 @@
+# --- Database lokal (JANGAN sampai ter-push ke publik) ---
+database.sqlite
+database.sqlite-journal
+*.sqlite3
+*.db
+
+# --- Aplikasi CRUD lokal (editor pribadi, bukan untuk publik) ---
+server.js
+editor/
+admin/
+
+# --- Tooling build (hanya dipakai lokal) ---
+src/
+
+# --- Variabel environment / kredensial ---
+.env
+.env.local
+
+# --- File OS / editor ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- CATATAN PENTING ---
+# JANGAN gitignore folder data/, uploads/buku/, ATAU file tailwind.css !
+# Ketiganya WAJIB di-commit & di-push:
+#   - tailwind.css   -> CSS hasil build, dibaca langsung oleh semua halaman HTML
+#   - data/          -> JSON hasil ekspor, dibaca GitHub Pages (read-only)
+#   - uploads/buku/  -> gambar sampul buku, ditampilkan langsung di situs publik

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Catatan — Points of Curiosity</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="tailwind.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="antialiased">
+
+  <!-- ============ Navigasi: sidebar di desktop, bottom bar di mobile/tablet ============ -->
+  <nav aria-label="Navigasi utama" class="hidden lg:flex lg:flex-col lg:items-center lg:fixed lg:inset-y-0 lg:left-0 lg:w-20 lg:py-8 lg:border-r lg:border-stone-200 lg:bg-white lg:z-30">
+    <a href="index.html" class="mb-10 font-display text-lg text-ink" title="Beranda — Points of Curiosity">PoC</a>
+    <div class="flex flex-col gap-7">
+      <a href="index.html" class="nav-icon" title="Beranda" aria-label="Beranda">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+      </a>
+      <a href="index.html#search" class="nav-icon" title="Cari catatan" aria-label="Cari catatan">
+        <i data-lucide="search" class="w-5 h-5"></i>
+      </a>
+      <a href="perpustakaan.html" class="nav-icon" title="Perpustakaan" aria-label="Buka perpustakaan buku">
+        <i data-lucide="library" class="w-5 h-5"></i>
+      </a>
+    </div>
+  </nav>
+
+  <nav aria-label="Navigasi utama" class="lg:hidden flex fixed bottom-0 inset-x-0 z-30 justify-around items-center h-16 bg-white border-t border-stone-200">
+    <a href="index.html" class="nav-icon p-2" title="Beranda" aria-label="Beranda">
+      <i data-lucide="book-open" class="w-6 h-6"></i>
+    </a>
+    <a href="index.html#search" class="nav-icon p-2" title="Cari catatan" aria-label="Cari catatan">
+      <i data-lucide="search" class="w-6 h-6"></i>
+    </a>
+    <a href="perpustakaan.html" class="nav-icon p-2" title="Perpustakaan" aria-label="Buka perpustakaan buku">
+      <i data-lucide="library" class="w-6 h-6"></i>
+    </a>
+  </nav>
+
+  <!-- ============ Konten utama ============ -->
+  <main class="lg:pl-20 pb-24 lg:pb-0 min-h-screen">
+    <div class="max-w-3xl mx-auto px-6 py-12 lg:py-16">
+
+      <a href="index.html" class="inline-flex items-center gap-1.5 text-sm text-stone-500 link-accent-hover transition-colors duration-200 mb-8">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        Kembali ke katalog
+      </a>
+
+      <article id="artikel-container" class="view-transition view-hidden">
+        <!-- Diisi oleh JS -->
+      </article>
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+  <script>
+    /**
+     * ---------------------------------------------------------------------
+     * DATA DUMMY (mode demo) — mensimulasikan isi dist/data/artikel/<slug>.json
+     * Dipakai sebagai fallback kalau fetch gagal (file:// tanpa server, atau
+     * dist/data/ belum diekspor). Begitu file artikel/<slug>.json asli
+     * tersedia di sebelah halaman ini, data ASLI otomatis dipakai.
+     * ---------------------------------------------------------------------
+     */
+    const DUMMY_ARTIKEL = {
+      "mengapa-kita-lupa-apa-yang-baru-dibaca": {
+        judul: "Mengapa Kita Lupa Apa yang Baru Dibaca?",
+        kategori: "Psikologi",
+        tanggal_dibuat: "2026-05-02 09:15:00",
+        buku: { slug: "thinking-fast-and-slow", judul: "Thinking, Fast and Slow" },
+        isi_catatan: `# Pertanyaan
+Kenapa otak cenderung membuang detail bacaan padahal baru beberapa jam lalu dibaca?
+
+## Jawaban Singkat
+Ini berkaitan dengan **kurva lupa Ebbinghaus**. Tanpa pengulangan aktif (active recall), memori jangka pendek tidak dipindahkan ke memori jangka panjang.
+
+- Solusi praktis: catat pertanyaan + jawaban (seperti yang sedang kamu bangun ini)
+- Ulangi dalam interval (spaced repetition)
+
+> "Membaca tanpa mencatat seperti menuang air ke gelas berlubang."`
+      },
+      "apa-itu-idempoten-dalam-pemrograman": {
+        judul: "Apa Itu Idempoten dalam Pemrograman?",
+        kategori: "Teknologi",
+        tanggal_dibuat: "2026-05-10 14:30:00",
+        buku: { slug: "clean-code-a-handbook-of-agile-software-craftsmanship", judul: "Clean Code: A Handbook of Agile Software Craftsmanship" },
+        isi_catatan: `Operasi disebut **idempoten** kalau dijalankan berkali-kali hasilnya tetap sama seperti dijalankan sekali.
+
+Contoh: \`PUT /user/1 {name: 'Budi'}\` -> idempoten.
+Contoh bukan idempoten: \`POST /order\` yang setiap kali dipanggil membuat order baru.
+
+Ini penting di desain API supaya retry otomatis aman dilakukan.`
+      },
+      "asal-mula-sistem-penanggalan-gregorian": {
+        judul: "Asal Mula Sistem Penanggalan Gregorian",
+        kategori: "Sejarah",
+        tanggal_dibuat: "2026-05-18 20:00:00",
+        buku: { slug: "sapiens-riwayat-singkat-umat-manusia", judul: "Sapiens: Riwayat Singkat Umat Manusia" },
+        isi_catatan: `Kalender Gregorian diperkenalkan Paus Gregorius XIII pada 1582 untuk memperbaiki pergeseran kalender Julian terhadap musim semi (equinox).
+
+Pergeseran ini terjadi karena kalender Julian menghitung satu tahun = 365.25 hari, padahal panjang tahun tropis sebenarnya sedikit lebih pendek.`
+      },
+      "kenapa-air-laut-asin-tapi-air-hujan-tidak": {
+        judul: "Kenapa Air Laut Asin tapi Air Hujan Tidak?",
+        kategori: "Sains",
+        tanggal_dibuat: "2026-06-01 08:45:00",
+        buku: null,
+        isi_catatan: `Air hujan berasal dari penguapan, proses yang meninggalkan garam dan mineral di belakang. Air sungai yang mengalir ke laut membawa mineral dari batuan, dan karena laut tidak punya jalan keluar, mineral itu terus terakumulasi selama jutaan tahun.`
+      },
+      "apa-bedanya-resesi-dan-depresi-ekonomi": {
+        judul: "Apa Bedanya Resesi dan Depresi Ekonomi?",
+        kategori: "Ekonomi",
+        tanggal_dibuat: "2026-06-10 11:00:00",
+        buku: null,
+        isi_catatan: `Resesi umumnya didefinisikan sebagai penurunan PDB dua kuartal berturut-turut. Depresi adalah resesi yang jauh lebih parah, berlangsung lebih lama (bisa bertahun-tahun), dengan pengangguran sangat tinggi — contoh historisnya Depresi Besar 1929.`
+      },
+      "kenapa-langit-berwarna-biru-bukan-hijau": {
+        judul: "Kenapa Langit Berwarna Biru, Bukan Hijau?",
+        kategori: "Sains",
+        tanggal_dibuat: "2026-06-12 09:05:00",
+        buku: { slug: "cosmos", judul: "Cosmos" },
+        isi_catatan: `# Pertanyaan
+Kalau cahaya matahari berisi semua warna, kenapa langit yang kita lihat selalu biru, bukan hijau atau ungu?
+
+## Jawaban Singkat
+Ini karena **hamburan Rayleigh** — partikel kecil di atmosfer menghamburkan cahaya gelombang pendek (biru) jauh lebih kuat daripada gelombang panjang (merah).
+
+Ungu sebenarnya dihamburkan lebih kuat lagi dari biru, tapi mata manusia kurang sensitif terhadap ungu, dan sebagian ungu diserap di atmosfer atas. Hasilnya, kombinasi sensitivitas mata + intensitas hamburan membuat kita melihat langit sebagai **biru**, bukan ungu atau hijau.`
+      },
+      "apa-beda-logika-deduktif-dan-induktif": {
+        judul: "Apa Beda Logika Deduktif dan Induktif?",
+        kategori: "Filsafat",
+        tanggal_dibuat: "2026-06-14 16:40:00",
+        buku: null,
+        isi_catatan: `# Pertanyaan
+Di buku-buku filsafat sering disebut 'deduktif' dan 'induktif' — apa bedanya secara praktis?
+
+## Jawaban Singkat
+**Deduktif**: dari premis umum ke kesimpulan khusus yang pasti benar jika premisnya benar. Contoh: "Semua manusia mati. Socrates manusia. Maka Socrates mati."
+
+**Induktif**: dari observasi khusus ke generalisasi yang *mungkin* benar, bukan pasti. Contoh: "Setiap angsa yang pernah kulihat berwarna putih, maka semua angsa putih" — ternyata salah, karena ada angsa hitam di Australia.
+
+Sains modern banyak memakai kombinasi keduanya: induktif untuk membangun hipotesis, deduktif untuk mengujinya.`
+      },
+      "dari-mana-asal-kata-kuliah": {
+        judul: "Dari Mana Asal Kata 'Kuliah'?",
+        kategori: "Bahasa",
+        tanggal_dibuat: "2026-06-16 19:20:00",
+        buku: null,
+        isi_catatan: `# Pertanyaan
+Kata 'kuliah' kedengarannya bukan asli bahasa Indonesia — dari mana asalnya?
+
+## Jawaban Singkat
+'Kuliah' diserap dari bahasa Arab *kulliyah* (كلية), yang berarti "fakultas" atau "lembaga pendidikan tinggi". Kata ini masuk ke bahasa Melayu/Indonesia lewat jalur pendidikan Islam, lalu maknanya menyempit menjadi "kegiatan belajar di perguruan tinggi" atau bahkan "satu sesi mengajar di kampus".`
+      }
+    };
+
+    function getSlugFromURL() {
+      // Hash (#slug) lebih robust dari query string (?slug=) untuk static server
+      // karena hash tidak pernah disentuh server — tidak bisa ter-strip oleh redirect.
+      const hash = window.location.hash.slice(1); // buang karakter # di depan
+      return hash ? decodeURIComponent(hash) : null;
+    }
+
+    async function loadArtikel(slug) {
+      // Path relatif dari root — sama dengan posisi artikel.html
+      const url = `data/artikel/${slug}.json`;
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status} — ${url}`);
+        return await res.json();
+      } catch (err) {
+        console.warn(`[POC] Gagal fetch "${url}":`, err.message);
+        console.info(`[POC] Fallback ke data dummy untuk slug: "${slug}"`);
+        return DUMMY_ARTIKEL[slug] || null;
+      }
+    }
+
+    function formatTanggal(raw) {
+      const d = new Date(String(raw).replace(" ", "T"));
+      if (isNaN(d.getTime())) return raw;
+      const bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+      return `${d.getDate()} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    function escapeHTML(str) {
+      const div = document.createElement("div");
+      div.textContent = String(str ?? "");
+      return div.innerHTML;
+    }
+
+    function renderNotFound(slug) {
+      const pesan = slug
+        ? `Tidak ada catatan dengan slug <code class="px-1 py-0.5 bg-stone-100 rounded text-xs">${escapeHTML(slug)}</code>.`
+        : `Parameter <code class="px-1 py-0.5 bg-stone-100 rounded text-xs">?slug=</code> tidak ditemukan di URL.`;
+      return `
+        <div class="text-center py-20 border border-dashed border-stone-300 rounded-md">
+          <p class="font-display text-lg text-ink mb-2">Catatan tidak ditemukan</p>
+          <p class="text-sm text-stone-500">${pesan}</p>
+          <p class="text-xs text-stone-400 mt-2">Pastikan sudah menjalankan <code class="bg-stone-100 px-1 rounded">npm run export</code> setelah menambah catatan di editor.</p>
+          <a href="index.html" class="inline-block mt-4 text-sm text-accent underline">Kembali ke katalog</a>
+        </div>`;
+    }
+
+    function renderArtikel(data) {
+      const isiHTML = DOMPurify.sanitize(marked.parse(data.isi_catatan || ""));
+      const bukuBadge = data.buku
+        ? `<a href="buku.html#${encodeURIComponent(data.buku.slug)}" class="inline-flex items-center gap-1.5 text-xs buku-ref-badge rounded-full px-3 py-1 mb-6 transition-colors duration-200">
+            <i data-lucide="book-marked" class="w-3.5 h-3.5"></i> Referensi: ${escapeHTML(data.buku.judul)}
+          </a>`
+        : "";
+      return `
+        <header class="mb-8">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="tag-pill">${escapeHTML(data.kategori || "Umum")}</span>
+            <span class="text-xs text-stone-400 tabular-nums">${formatTanggal(data.tanggal_dibuat)}</span>
+          </div>
+          <h1 class="font-display text-2xl sm:text-3xl text-ink leading-snug">${escapeHTML(data.judul)}</h1>
+        </header>
+        ${bukuBadge ? `<div>${bukuBadge}</div>` : ""}
+        <div class="prose-catatan" style="font-size:15px">${isiHTML}</div>`;
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      lucide.createIcons();
+
+      const slug = getSlugFromURL();
+
+      const container = document.getElementById("artikel-container");
+      const data = slug ? await loadArtikel(slug) : null;
+
+      container.innerHTML = data ? renderArtikel(data) : renderNotFound(slug);
+      if (data) document.title = `${data.judul} — Points of Curiosity`;
+      lucide.createIcons();
+
+      requestAnimationFrame(() => container.classList.remove("view-hidden"));
+    });
+  </script>
+</body>
+</html>

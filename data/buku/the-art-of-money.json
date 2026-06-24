@@ -1,0 +1,35 @@
+{
+  "id": 1,
+  "judul": "The Art of Money",
+  "subjudul": "Seni Mencari dan Membelanjakan Uang yang Harus Diketahui Semua Orang",
+  "slug": "the-art-of-money",
+  "penulis": "Indra Ismawan",
+  "editor": "Arifin",
+  "penerjemah": null,
+  "ilustrator": "Sugeng D. T",
+  "penerbit": "Media Pressindo",
+  "kota_terbit": "Sleman, Yogyakarta",
+  "tahun_terbit": 2025,
+  "edisi": null,
+  "cetakan": "6",
+  "isbn": "978-623-7254-94-2",
+  "jumlah_halaman": 309,
+  "bahasa": "Bahasa Indonesia",
+  "seri": null,
+  "volume": null,
+  "kategori": "Bisnis",
+  "subjek": "investasi,manajemen keuangan,keuangan",
+  "status_baca": "sedang_dibaca",
+  "deskripsi": "Adakah yang Salah dengan Cara Kita Memperlakukan Uang Sehinnga Sulit Menjadi Kaya?",
+  "gambar_url": "uploads/buku/the-art-of-money.webp",
+  "tanggal_ditambahkan": "2026-06-24 02:56:37",
+  "catatan_terkait": [
+    {
+      "id": 3,
+      "judul": "Financial Engineering",
+      "slug": "financial-engineering",
+      "kategori": "Bisnis",
+      "tanggal_dibuat": "2026-06-24 10:56"
+    }
+  ]
+}

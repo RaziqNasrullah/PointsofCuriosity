@@ -1,0 +1,12 @@
+{
+  "id": 3,
+  "judul": "Financial Engineering",
+  "slug": "financial-engineering",
+  "kategori": "Bisnis",
+  "tanggal_dibuat": "2026-06-24 10:56",
+  "isi_catatan": "## 1. Financial Engineering\n**Financial engineering** adalah bidang yang menggabungkan keuangan, matematika, statistika, ekonomi, dan pemrograman untuk merancang, menganalisis, dan mengelola produk serta risiko keuangan.\n\n### Apa yang dilakukan seorang Financial Engineer?\nMereka biasanya:\n* Membuat model untuk memprediksi harga aset (saham, obligasi, komoditas).\n* Mengembangkan instrumen keuangan baru, seperti derivatif.\n* Mengukur dan mengelola risiko investasi.\n* Membangun algoritma trading otomatis.\n* Mengoptimalkan portofolio investasi.\n\n> **Contoh Sederhana:** > Misalnya sebuah maskapai khawatir harga bahan bakar akan naik. *Financial engineer* dapat merancang strategi menggunakan kontrak berjangka (*futures*) untuk mengurangi risiko kenaikan harga tersebut.\n\n### Keterampilan yang Dibutuhkan\n1. Matematika tingkat lanjut (kalkulus, aljabar linear)\n2. Probabilitas dan statistika\n3. Pemrograman (Python, C++, R)\n4. Keuangan dan pasar modal\n5. Analisis data\n\n### Karier yang Umum\n* Quantitative Analyst (Quant)\n* Risk Manager\n* Algorithmic Trader\n* Portfolio Analyst\n* Derivatives Structurer\n\n### Perbedaan dengan Finance Biasa\n| Aspek | Finance Tradisional | Financial Engineering |\n| :--- | :--- | :--- |\n| **Fokus Utama** | Analisis bisnis dan investasi | Model matematis dan teknologi |\n| **Alat Utama** | Laporan keuangan | Statistik dan pemrograman |\n| **Kesesuaian Karier** | Analis keuangan | Quant dan pengembang model keuangan |\n\n\n*Singkatnya, financial engineering adalah \"rekayasa\" di dunia keuangan, yaitu menggunakan matematika dan teknologi untuk menyelesaikan masalah keuangan yang kompleks serta menciptakan solusi investasi dan manajemen risiko yang lebih efektif.*",
+  "buku": {
+    "slug": "the-art-of-money",
+    "judul": "The Art of Money"
+  }
+}

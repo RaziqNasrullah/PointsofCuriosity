@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detail Buku — Points of Curiosity</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="tailwind.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="antialiased">
+
+  <!-- ============ Navigasi: sidebar di desktop, bottom bar di mobile/tablet ============ -->
+  <nav aria-label="Navigasi utama" class="hidden lg:flex lg:flex-col lg:items-center lg:fixed lg:inset-y-0 lg:left-0 lg:w-20 lg:py-8 lg:border-r lg:border-stone-200 lg:bg-white lg:z-30">
+    <a href="index.html" class="mb-10 font-display text-lg text-ink" title="Beranda — Points of Curiosity">PoC</a>
+    <div class="flex flex-col gap-7">
+      <a href="index.html" class="nav-icon" title="Beranda" aria-label="Beranda">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+      </a>
+      <a href="index.html#search" class="nav-icon" title="Cari catatan" aria-label="Cari catatan">
+        <i data-lucide="search" class="w-5 h-5"></i>
+      </a>
+      <a href="perpustakaan.html" class="nav-icon" title="Perpustakaan" aria-label="Buka perpustakaan buku" style="color: var(--accent);">
+        <i data-lucide="library" class="w-5 h-5"></i>
+      </a>
+    </div>
+  </nav>
+
+  <nav aria-label="Navigasi utama" class="lg:hidden flex fixed bottom-0 inset-x-0 z-30 justify-around items-center h-16 bg-white border-t border-stone-200">
+    <a href="index.html" class="nav-icon p-2" title="Beranda" aria-label="Beranda">
+      <i data-lucide="book-open" class="w-6 h-6"></i>
+    </a>
+    <a href="index.html#search" class="nav-icon p-2" title="Cari catatan" aria-label="Cari catatan">
+      <i data-lucide="search" class="w-6 h-6"></i>
+    </a>
+    <a href="perpustakaan.html" class="nav-icon p-2" title="Perpustakaan" aria-label="Buka perpustakaan buku" style="color: var(--accent);">
+      <i data-lucide="library" class="w-6 h-6"></i>
+    </a>
+  </nav>
+
+  <!-- ============ Konten utama ============ -->
+  <main class="lg:pl-20 pb-24 lg:pb-0 min-h-screen">
+    <div class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
+
+      <a href="perpustakaan.html" class="inline-flex items-center gap-1.5 text-sm text-stone-500 link-accent-hover transition-colors duration-200 mb-8">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        Kembali ke perpustakaan
+      </a>
+
+      <div id="buku-container" class="view-transition view-hidden"></div>
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    /**
+     * ---------------------------------------------------------------------
+     * DATA DUMMY (mode demo) — mensimulasikan dist/data/buku/<slug>.json
+     * Dipakai sebagai fallback kalau fetch gagal.
+     * ---------------------------------------------------------------------
+     */
+    const DUMMY_BUKU_DETAIL = {
+      "sapiens-riwayat-singkat-umat-manusia": {
+        id: 1, judul: "Sapiens", subjudul: "Riwayat Singkat Umat Manusia", slug: "sapiens-riwayat-singkat-umat-manusia",
+        penulis: "Yuval Noah Harari", editor: null, penerjemah: "Damaring Tyas Wulandari Palar", ilustrator: null,
+        penerbit: "KPG (Kepustakaan Populer Gramedia)", kota_terbit: "Jakarta", tahun_terbit: 2017,
+        edisi: null, cetakan: "Cetakan ke-5", isbn: null, jumlah_halaman: 588, bahasa: "Indonesia",
+        seri: null, volume: null, kategori: "Sejarah", subjek: "antropologi, evolusi, peradaban",
+        status_baca: "sudah_dibaca", gambar_url: null, tanggal_ditambahkan: "2026-04-01 10:00:00",
+        deskripsi: "Menelusuri perjalanan Homo sapiens dari pemburu-pengumpul hingga penguasa planet, menyoroti bagaimana mitos bersama, pertanian, dan ilmu pengetahuan membentuk peradaban manusia.",
+        catatan_terkait: [
+          { id: 3, judul: "Asal Mula Sistem Penanggalan Gregorian", slug: "asal-mula-sistem-penanggalan-gregorian", kategori: "Sejarah", tanggal_dibuat: "2026-05-18 20:00:00" },
+        ],
+      },
+      "thinking-fast-and-slow": {
+        id: 2, judul: "Thinking, Fast and Slow", subjudul: null, slug: "thinking-fast-and-slow",
+        penulis: "Daniel Kahneman", editor: null, penerjemah: null, ilustrator: null,
+        penerbit: "Farrar, Straus and Giroux", kota_terbit: "New York", tahun_terbit: 2011,
+        edisi: null, cetakan: null, isbn: null, jumlah_halaman: 499, bahasa: "Inggris",
+        seri: null, volume: null, kategori: "Psikologi", subjek: "psikologi kognitif, pengambilan keputusan",
+        status_baca: "sudah_dibaca", gambar_url: null, tanggal_ditambahkan: "2026-05-08 10:00:00",
+        deskripsi: "Membedah dua sistem berpikir manusia — cepat-intuitif dan lambat-analitis — serta bagaimana keduanya memengaruhi keputusan sehari-hari, lengkap dengan bias kognitif yang sering tidak disadari.",
+        catatan_terkait: [
+          { id: 1, judul: "Mengapa Kita Lupa Apa yang Baru Dibaca?", slug: "mengapa-kita-lupa-apa-yang-baru-dibaca", kategori: "Psikologi", tanggal_dibuat: "2026-05-02 09:15:00" },
+        ],
+      },
+      "clean-code-a-handbook-of-agile-software-craftsmanship": {
+        id: 3, judul: "Clean Code", subjudul: "A Handbook of Agile Software Craftsmanship", slug: "clean-code-a-handbook-of-agile-software-craftsmanship",
+        penulis: "Robert C. Martin", editor: null, penerjemah: null, ilustrator: null,
+        penerbit: "Prentice Hall", kota_terbit: "Upper Saddle River", tahun_terbit: 2008,
+        edisi: null, cetakan: null, isbn: null, jumlah_halaman: 464, bahasa: "Inggris",
+        seri: null, volume: null, kategori: "Teknologi", subjek: "rekayasa perangkat lunak, praktik baik pemrograman",
+        status_baca: "sedang_dibaca", gambar_url: null, tanggal_ditambahkan: "2026-05-20 10:00:00",
+        deskripsi: "Panduan praktis menulis kode yang mudah dibaca dan dirawat, dengan studi kasus refactoring dan prinsip-prinsip clean code dari pengalaman puluhan tahun di industri.",
+        catatan_terkait: [
+          { id: 2, judul: "Apa Itu Idempoten dalam Pemrograman?", slug: "apa-itu-idempoten-dalam-pemrograman", kategori: "Teknologi", tanggal_dibuat: "2026-05-10 14:30:00" },
+        ],
+      },
+      "cosmos": {
+        id: 4, judul: "Cosmos", subjudul: null, slug: "cosmos",
+        penulis: "Carl Sagan", editor: null, penerjemah: null, ilustrator: null,
+        penerbit: "Random House", kota_terbit: null, tahun_terbit: 1980,
+        edisi: null, cetakan: null, isbn: null, jumlah_halaman: 365, bahasa: "Inggris",
+        seri: null, volume: null, kategori: "Sains", subjek: "astronomi, kosmologi, sejarah sains",
+        status_baca: "ingin_dibaca", gambar_url: null, tanggal_ditambahkan: "2026-06-08 10:00:00",
+        deskripsi: "Menjelajahi alam semesta dan sejarah sains lewat narasi yang puitis, menghubungkan astronomi, biologi, dan sejarah peradaban manusia dalam satu pandangan kosmis.",
+        catatan_terkait: [
+          { id: 6, judul: "Kenapa Langit Berwarna Biru, Bukan Hijau?", slug: "kenapa-langit-berwarna-biru-bukan-hijau", kategori: "Sains", tanggal_dibuat: "2026-06-12 09:05:00" },
+        ],
+      },
+    };
+
+    const STATUS_LABEL = {
+      ingin_dibaca: "Ingin Dibaca",
+      sedang_dibaca: "Sedang Dibaca",
+      sudah_dibaca: "Sudah Dibaca",
+    };
+
+    // Label tampilan untuk setiap field biodata, dan urutannya di halaman.
+    // Field bernilai null/kosong otomatis disembunyikan (lihat renderBiodata).
+    const BIODATA_FIELDS = [
+      ["penulis", "Penulis/Pengarang"],
+      ["editor", "Editor"],
+      ["penerjemah", "Penerjemah"],
+      ["ilustrator", "Ilustrator"],
+      ["penerbit", "Penerbit"],
+      ["kota_terbit", "Kota Terbit"],
+      ["tahun_terbit", "Tahun Terbit"],
+      ["edisi", "Edisi"],
+      ["cetakan", "Cetakan"],
+      ["isbn", "ISBN"],
+      ["jumlah_halaman", "Jumlah Halaman"],
+      ["bahasa", "Bahasa"],
+      ["seri", "Seri"],
+      ["volume", "Volume/Jilid"],
+      ["kategori", "Kategori"],
+      ["subjek", "Subjek/Kata Kunci"],
+    ];
+
+    function getSlugFromURL() {
+      const hash = window.location.hash.slice(1);
+      return hash ? decodeURIComponent(hash) : null;
+    }
+
+    async function loadBuku(slug) {
+      const url = `data/buku/${slug}.json`;
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status} — ${url}`);
+        return await res.json();
+      } catch (err) {
+        console.warn(`[POC] Gagal fetch "${url}":`, err.message);
+        return DUMMY_BUKU_DETAIL[slug] || null;
+      }
+    }
+
+    function escapeHTML(str) {
+      const div = document.createElement("div");
+      div.textContent = String(str ?? "");
+      return div.innerHTML;
+    }
+
+    function formatTanggalSingkat(raw) {
+      const d = new Date(String(raw).replace(" ", "T"));
+      if (isNaN(d.getTime())) return raw;
+      const bulan = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+      return `${String(d.getDate()).padStart(2, "0")} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    function renderNotFound(slug) {
+      return `
+        <div class="text-center py-20 border border-dashed border-stone-300 rounded-md">
+          <p class="font-display text-lg text-ink mb-2">Buku tidak ditemukan</p>
+          <p class="text-sm text-stone-500">
+            ${slug ? `Tidak ada buku dengan slug <code class="px-1 py-0.5 bg-stone-100 rounded">${escapeHTML(slug)}</code>.` : "Tidak ada slug yang diminta."}
+          </p>
+          <a href="perpustakaan.html" class="inline-block mt-4 text-sm text-accent underline">Kembali ke perpustakaan</a>
+        </div>`;
+    }
+
+    function renderBiodata(data) {
+      const rows = BIODATA_FIELDS
+        .filter(([key]) => data[key] !== null && data[key] !== undefined && data[key] !== "")
+        .map(([key, label]) => `
+          <div class="biodata-row">
+            <dt>${escapeHTML(label)}</dt>
+            <dd>${escapeHTML(data[key])}</dd>
+          </div>`)
+        .join("");
+      return `<dl>${rows}</dl>`;
+    }
+
+    function renderCatatanTerkait(items) {
+      if (!items || items.length === 0) {
+        return `<p class="text-sm text-stone-400 italic">Belum ada catatan yang merujuk ke buku ini.</p>`;
+      }
+      return `
+        <ul class="divide-y divide-stone-200">
+          ${items.map((c) => `
+            <li>
+              <a href="artikel.html#${encodeURIComponent(c.slug)}" class="toc-row">
+                <span class="toc-title">${escapeHTML(c.judul)}</span>
+                <span class="toc-leader"></span>
+                <span class="text-xs text-stone-400 tabular-nums whitespace-nowrap">${formatTanggalSingkat(c.tanggal_dibuat)}</span>
+              </a>
+            </li>`).join("")}
+        </ul>`;
+    }
+
+    function renderBuku(data) {
+      const coverHTML = data.gambar_url
+        ? `<img src="${escapeHTML(data.gambar_url)}" alt="Sampul buku ${escapeHTML(data.judul)}" class="buku-detail-cover" />`
+        : `<div class="buku-detail-cover flex items-center justify-center text-stone-300"><i data-lucide="book" class="w-12 h-12"></i></div>`;
+
+      return `
+        <div class="buku-detail-grid gap-8 mb-12">
+          <div>${coverHTML}</div>
+          <div>
+            <span class="status-pill status-${data.status_baca}">${STATUS_LABEL[data.status_baca] || data.status_baca}</span>
+            <h1 class="font-display text-2xl sm:text-3xl text-ink leading-snug mt-3">${escapeHTML(data.judul)}</h1>
+            ${data.subjudul ? `<p class="font-display text-base text-stone-500 italic mt-1">${escapeHTML(data.subjudul)}</p>` : ""}
+
+            ${data.deskripsi ? `<p class="text-sm text-slate-600 leading-relaxed mt-4">${escapeHTML(data.deskripsi)}</p>` : ""}
+
+            <div class="mt-6">${renderBiodata(data)}</div>
+          </div>
+        </div>
+
+        <section>
+          <h2 class="font-display text-lg text-ink mb-4">Catatan dari buku ini</h2>
+          ${renderCatatanTerkait(data.catatan_terkait)}
+        </section>`;
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      lucide.createIcons();
+
+      const slug = getSlugFromURL();
+      const container = document.getElementById("buku-container");
+      const data = slug ? await loadBuku(slug) : null;
+
+      container.innerHTML = data ? renderBuku(data) : renderNotFound(slug);
+      if (data) document.title = `${data.judul} — Points of Curiosity`;
+      lucide.createIcons();
+
+      requestAnimationFrame(() => container.classList.remove("view-hidden"));
+    });
+  </script>
+</body>
+</html>

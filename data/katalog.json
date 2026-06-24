@@ -1,0 +1,14 @@
+[
+  {
+    "id": 3,
+    "judul": "Financial Engineering",
+    "slug": "financial-engineering",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-24 10:56",
+    "ringkasan": "1. Financial Engineering Financial engineering adalah bidang yang menggabungkan keuangan, matematika, statistika, ekonomi, dan pemrograman untuk merancang, meng...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  }
+]
