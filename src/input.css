@@ -1,0 +1,14 @@
+/* src/input.css
+   ---------------------------------------------------------------------------
+   Entry point untuk Tailwind CLI. File ini di-compile menjadi tailwind.css
+   yang di-commit ke repo dan dipakai langsung oleh semua file HTML.
+
+   Jalankan build:
+     npm run build:css          (sekali)
+     npm run build:css:watch    (mode watch, auto-rebuild saat HTML berubah)
+   ---------------------------------------------------------------------------
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

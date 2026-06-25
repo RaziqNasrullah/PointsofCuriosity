@@ -9,8 +9,11 @@ server.js
 editor/
 admin/
 
-# --- Tooling build (hanya dipakai lokal) ---
-src/
+# --- Tooling build (hanya file output-nya yang tidak di-commit) ---
+# src/input.css WAJIB di-commit (dipakai GitHub Actions untuk build)
+# tailwind.css TIDAK di-commit — di-generate otomatis oleh GitHub Actions saat deploy,
+# dan di-generate lokal via `npm run build:css` sebelum menjalankan editor/serve.
+tailwind.css
 
 # --- Variabel environment / kredensial ---
 .env
