@@ -1,5 +1,18 @@
 [
   {
+    "id": 2,
+    "judul": "GRIT",
+    "subjudul": "Kekuatan Passion & Kegigihan",
+    "slug": "grit",
+    "penulis": "Angela Duckworth",
+    "kategori": "Self-Improvement",
+    "status_baca": "ingin_dibaca",
+    "gambar_url": "uploads/buku/grit.webp",
+    "tahun_terbit": 2025,
+    "ringkasan": "Mengapa orang yang punya bakat alami sering gagal mencapai potensi mereka sementara orang lain yang tidak terlalu berbakat bisa menggapai hal hal yang menakjubk...",
+    "tanggal_ditambahkan": "2026-06-25 00:49:43"
+  },
+  {
     "id": 1,
     "judul": "The Art of Money",
     "subjudul": "Seni Mencari dan Membelanjakan Uang yang Harus Diketahui Semua Orang",

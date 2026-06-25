@@ -1,0 +1,12 @@
+{
+  "id": 5,
+  "judul": "Mekanisme Repo",
+  "slug": "mekanisme-repo",
+  "kategori": "Bisnis",
+  "tanggal_dibuat": "2026-06-25 07:22",
+  "isi_catatan": "## 3. Mekanisme Repo (Repurchase Agreement)\n**Mekanisme repo** adalah transaksi keuangan di mana satu pihak menjual aset (biasanya surat berharga) dengan janji akan membeli kembali aset tersebut pada waktu tertentu dengan harga yang sudah disepakati. Sederhananya: **pinjam uang dengan jaminan aset.**\n\n### Contoh Simulasi Transaksi\n1. Bank A butuh dana cepat.\n2. Bank A punya obligasi pemerintah senilai Rp100 miliar.\n3. Bank A \"menjual\" obligasi itu ke Bank B dengan harga Rp98 miliar.\n4. Terdapat perjanjian: 7 hari lagi Bank A wajib membeli kembali obligasi tersebut seharga Rp98,1 miliar.\n5. Selisih Rp100 juta adalah bunga/biaya pendanaan repo.\n\n### Secara Perspektif Ekonomi\n* **Bank A:** Meminjam uang.\n* **Bank B:** Memberikan pinjaman.\n* **Obligasi:** Berfungsi sebagai jaminan (kolateral).\n\n### Kenapa Lembaga Keuangan Menggunakan Repo?\n* Bank bisa mendapatkan likuiditas tanpa harus menjual aset secara permanen.\n* Lembaga keuangan bisa mengelola kas jangka pendek dengan lebih fleksibel.\n* Menjaga pasar uang menjadi lebih stabil.\n\n### Jenis Repo yang Umum\n* **Overnight Repo:** Jatuh tempo dalam waktu 1 hari.\n* **Term Repo:** Jatuh tempo dalam beberapa hari sampai bulan.\n* **Reverse Repo:** Transaksi yang dilihat dari sisi pihak yang membeli aset dan meminjamkan uang. Bank sentral sering memakai repo/reverse repo untuk mengatur jumlah uang beredar dan suku bunga jangka pendek.",
+  "buku": {
+    "slug": "the-art-of-money",
+    "judul": "The Art of Money"
+  }
+}

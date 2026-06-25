@@ -25,6 +25,34 @@
   "tanggal_ditambahkan": "2026-06-24 02:56:37",
   "catatan_terkait": [
     {
+      "id": 5,
+      "judul": "Mekanisme Repo",
+      "slug": "mekanisme-repo",
+      "kategori": "Bisnis",
+      "tanggal_dibuat": "2026-06-25 07:22"
+    },
+    {
+      "id": 6,
+      "judul": "Kampung Wisata",
+      "slug": "kampung-wisata",
+      "kategori": "Bisnis",
+      "tanggal_dibuat": "2026-06-25 07:22"
+    },
+    {
+      "id": 7,
+      "judul": "Ekowisata",
+      "slug": "ekowisata",
+      "kategori": "Bisnis",
+      "tanggal_dibuat": "2026-06-25 07:22"
+    },
+    {
+      "id": 4,
+      "judul": "Konsesi Tambang",
+      "slug": "konsesi-tambang",
+      "kategori": "Hukum",
+      "tanggal_dibuat": "2026-06-25 07:21"
+    },
+    {
       "id": 3,
       "judul": "Financial Engineering",
       "slug": "financial-engineering",

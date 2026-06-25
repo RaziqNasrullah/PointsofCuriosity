@@ -1,5 +1,53 @@
 [
   {
+    "id": 5,
+    "judul": "Mekanisme Repo",
+    "slug": "mekanisme-repo",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-25 07:22",
+    "ringkasan": "3. Mekanisme Repo (Repurchase Agreement) Mekanisme repo adalah transaksi keuangan di mana satu pihak menjual aset (biasanya surat berharga) dengan janji akan me...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 6,
+    "judul": "Kampung Wisata",
+    "slug": "kampung-wisata",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-25 07:22",
+    "ringkasan": "4. Kampung Wisata Kampung wisata adalah sebuah permukiman atau desa yang dikembangkan menjadi tujuan wisata, dengan daya tarik utama berasal dari kehidupan loka...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 7,
+    "judul": "Ekowisata",
+    "slug": "ekowisata",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-25 07:22",
+    "ringkasan": "5. Ekowisata (Ecotourism) Ekowisata adalah bentuk wisata yang berfokus pada alam dan lingkungan, dengan tujuan menikmati keindahan alam sambil menjaga kelestari...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 4,
+    "judul": "Konsesi Tambang",
+    "slug": "konsesi-tambang",
+    "kategori": "Hukum",
+    "tanggal_dibuat": "2026-06-25 07:21",
+    "ringkasan": "2. Konsesi Tambang Konsesi tambang adalah izin atau hak yang diberikan oleh pemerintah kepada pihak tertentu untuk melakukan kegiatan pertambangan di wilayah te...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
     "id": 3,
     "judul": "Financial Engineering",
     "slug": "financial-engineering",
