@@ -1,0 +1,12 @@
+{
+  "id": 8,
+  "judul": "Apa itu Dogma",
+  "slug": "dogma",
+  "kategori": "Bahasa",
+  "tanggal_dibuat": "2026-06-29 21:56",
+  "isi_catatan": "## Apa itu Dogma?\n \n**Asal kata:** Latin *dogma* → \"sesuatu yang tampak benar\", dari bahasa Yunani *dokein* (berpendapat/tampak).\n \n**Definisi:** Dogma adalah suatu keyakinan, prinsip, atau doktrin yang ditetapkan oleh otoritas tertentu (agama, ideologi, institusi) dan dianggap sebagai kebenaran mutlak yang tidak boleh dipertanyakan atau dibantah.\n \n**Ciri utama:**\n- Berasal dari otoritas tertinggi\n- Tidak dapat digugat oleh pengikutnya\n- Mengikat seluruh anggota komunitas\n- Bersifat tetap dan kaku\n**Contoh:**\n- Agama: Dogma Katolik tentang *papal infallibility*\n- Politik: Ideologi totaliter yang memandang pemimpin selalu benar\n- Sehari-hari: Pendapat yang tidak mau diganggu gugat\n**Konotasi:** Dalam konteks modern cenderung negatif (pemikiran kaku), namun dalam teologi bisa netral atau positif sebagai fondasi kepercayaan.\n \n> 📚 Sumber: Merriam-Webster Dictionary, Oxford English Dictionary, Encyclopædia Britannica\n \n---",
+  "buku": {
+    "slug": "the-art-of-money",
+    "judul": "The Art of Money"
+  }
+}

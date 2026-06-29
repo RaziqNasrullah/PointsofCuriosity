@@ -1,11 +1,182 @@
 [
   {
+    "id": 22,
+    "judul": "Apa itu Giro",
+    "slug": "giro",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 22:36",
+    "ringkasan": "Apa itu Giro dalam Sistem Perbankan? Asal kata: Kata giro berasal dari bahasa Italia giro yang berarti \"putaran\" atau \"lingkaran\", yang berakar dari bahasa Yuna...",
+    "buku": null
+  },
+  {
+    "id": 20,
+    "judul": "Apa itu Bail-in",
+    "slug": "bail-in",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 22:35",
+    "ringkasan": "Apa itu Konsep Bail in? Asal kata: Istilah bail in diciptakan sebagai lawan kata langsung dari bailout . Menggunakan analogi maritim yang sama, jika bailout ber...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 21,
+    "judul": "Apa itu Deposan dan Bedanya dengan Nasabah",
+    "slug": "deposan-vs-nasabah",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 22:35",
+    "ringkasan": "Apa itu Deposan dan Bedanya dengan Nasabah? Asal kata: Deposan: Menyerap kata bahasa Inggris depositor , yang berakar dari bahasa Latin depositum → \"sesuatu yan...",
+    "buku": null
+  },
+  {
+    "id": 19,
+    "judul": "Apa itu Bail-Out",
+    "slug": "bail-out",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 22:34",
+    "ringkasan": "Apa itu Skema Bailout? Asal kata: Istilah bailout berasal dari ranah maritim/penerbangan. Kata bail bermakna menimba air keluar dari perahu yang bocor agar tida...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 18,
+    "judul": "Apa itu Terra Incognita",
+    "slug": "terra-incognita",
+    "kategori": "Bahasa",
+    "tanggal_dibuat": "2026-06-29 22:33",
+    "ringkasan": "Apa itu Terra Incognita? Asal kata: Bahasa Latin terra → \"tanah\" atau \"wilayah\" + incognita → \"tidak diketahui\" atau \"belum dikenal\" (dari akar kata cognoscere...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 17,
+    "judul": "Apa itu Status Double Minority",
+    "slug": "double-minority",
+    "kategori": "Sosial",
+    "tanggal_dibuat": "2026-06-29 22:25",
+    "ringkasan": "Apa itu Status Double Minority? 1. Pendekatan Bahasa Secara linguistik, istilah \"Double Minority\" (Minoritas Ganda) berasal dari penggabungan dua kata dalam bah...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 16,
+    "judul": "Apa itu Patronase Negara",
+    "slug": "patronase-negara",
+    "kategori": "Hukum",
+    "tanggal_dibuat": "2026-06-29 22:24",
+    "ringkasan": "Apa itu Patronase Negara? 1. Pendekatan Bahasa Secara linguistik, istilah \"Patronase\" berasal dari bahasa asing yang memiliki akar sejarah yang kuat: Patronase...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 15,
+    "judul": "Apa itu Bank Run",
+    "slug": "apa-itu-bank-run",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 22:23",
+    "ringkasan": "Apa itu Bank Run? 1. Pendekatan Bahasa Secara kebahasaan, istilah \"Bank Run\" terdiri dari dua kata dalam bahasa Inggris: Bank: Berasal dari bahasa Italia banca,...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 14,
+    "judul": "Apa itu Capital Flight",
+    "slug": "capital-flight",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 22:22",
+    "ringkasan": "Apa itu Capital Flight? 1. Pendekatan Bahasa Secara linguistik, istilah \"Capital Flight\" (yang dalam bahasa Indonesia sering diterjemahkan sebagai Pelarian Moda...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 13,
+    "judul": "Apa itu Premi Resiko / Premium Risk",
+    "slug": "premium-risk",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 22:14",
+    "ringkasan": "Apa itu Premi Risiko dalam Bisnis? 1. Pendekatan Bahasa Secara linguistik, istilah \"Premi Risiko\" (atau dalam bahasa Inggris disebut Risk Premium) terbentuk dar...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 12,
+    "judul": "Apa itu Emerging Market",
+    "slug": "emerging-market",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 22:09",
+    "ringkasan": "Apa itu Emerging Market dalam Bisnis? Asal kata: Emerging dari Latin emergere = \"keluar ke permukaan / muncul\". Market = pasar/sistem ekonomi suatu negara. → \"P...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 11,
+    "judul": "Kenapa USD Menjadi Tolok Ukur Stabilitas dan Bukan CHF?",
+    "slug": "usd-tolok-ukur",
+    "kategori": "Bisnis, Sejarah",
+    "tanggal_dibuat": "2026-06-29 22:05",
+    "ringkasan": "Kenapa USD Menjadi Tolok Ukur Stabilitas dan Bukan Swiss Franc? Asal kata: USD = United States Dollar Franc dari Latin Francorum Rex (\"Raja kaum Frank\") Reserve...",
+    "buku": null
+  },
+  {
+    "id": 10,
+    "judul": "Apa itu Tycoon Bisnis",
+    "slug": "tycoon-bisnis",
+    "kategori": "Bisnis",
+    "tanggal_dibuat": "2026-06-29 21:57",
+    "ringkasan": "Apa itu Tycoon dalam Bisnis? Asal kata: Bahasa Jepang Taikun (大君) — Tai (besar) + Kun (penguasa/tuan). Awalnya merujuk pada Shogun Jepang, dibawa ke bahasa Ingg...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 8,
+    "judul": "Apa itu Dogma",
+    "slug": "dogma",
+    "kategori": "Bahasa",
+    "tanggal_dibuat": "2026-06-29 21:56",
+    "ringkasan": "Apa itu Dogma? Asal kata: Latin dogma → \"sesuatu yang tampak benar\", dari bahasa Yunani dokein (berpendapat/tampak). Definisi: Dogma adalah suatu keyakinan, pri...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
+    "id": 9,
+    "judul": "Apa itu Mesopotamia",
+    "slug": "mesopotamia",
+    "kategori": "Sejarah",
+    "tanggal_dibuat": "2026-06-29 21:56",
+    "ringkasan": "Apa itu Mesopotamia dan Pengaruhnya? Asal kata: Bahasa Yunani — Meso (tengah/antara) + Potamos (sungai) → \"Tanah di antara dua sungai\" (Tigris & Eufrat). Defini...",
+    "buku": {
+      "slug": "the-art-of-money",
+      "judul": "The Art of Money"
+    }
+  },
+  {
     "id": 5,
-    "judul": "Mekanisme Repo",
+    "judul": "Apa itu Mekanisme Repo",
     "slug": "mekanisme-repo",
     "kategori": "Bisnis",
     "tanggal_dibuat": "2026-06-25 07:22",
-    "ringkasan": "3. Mekanisme Repo (Repurchase Agreement) Mekanisme repo adalah transaksi keuangan di mana satu pihak menjual aset (biasanya surat berharga) dengan janji akan me...",
+    "ringkasan": "Mekanisme Repo (Repurchase Agreement) Mekanisme repo adalah transaksi keuangan di mana satu pihak menjual aset (biasanya surat berharga) dengan janji akan membe...",
     "buku": {
       "slug": "the-art-of-money",
       "judul": "The Art of Money"
@@ -13,11 +184,11 @@
   },
   {
     "id": 6,
-    "judul": "Kampung Wisata",
+    "judul": "Apa itu Kampung Wisata",
     "slug": "kampung-wisata",
     "kategori": "Bisnis",
     "tanggal_dibuat": "2026-06-25 07:22",
-    "ringkasan": "4. Kampung Wisata Kampung wisata adalah sebuah permukiman atau desa yang dikembangkan menjadi tujuan wisata, dengan daya tarik utama berasal dari kehidupan loka...",
+    "ringkasan": "Kampung Wisata Kampung wisata adalah sebuah permukiman atau desa yang dikembangkan menjadi tujuan wisata, dengan daya tarik utama berasal dari kehidupan lokal,...",
     "buku": {
       "slug": "the-art-of-money",
       "judul": "The Art of Money"
@@ -25,11 +196,11 @@
   },
   {
     "id": 7,
-    "judul": "Ekowisata",
+    "judul": "Apa itu Ekowisata",
     "slug": "ekowisata",
     "kategori": "Bisnis",
     "tanggal_dibuat": "2026-06-25 07:22",
-    "ringkasan": "5. Ekowisata (Ecotourism) Ekowisata adalah bentuk wisata yang berfokus pada alam dan lingkungan, dengan tujuan menikmati keindahan alam sambil menjaga kelestari...",
+    "ringkasan": "Ekowisata (Ecotourism) Ekowisata adalah bentuk wisata yang berfokus pada alam dan lingkungan, dengan tujuan menikmati keindahan alam sambil menjaga kelestariann...",
     "buku": {
       "slug": "the-art-of-money",
       "judul": "The Art of Money"
@@ -37,11 +208,11 @@
   },
   {
     "id": 4,
-    "judul": "Konsesi Tambang",
+    "judul": "Apa itu Konsesi Tambang",
     "slug": "konsesi-tambang",
     "kategori": "Hukum",
     "tanggal_dibuat": "2026-06-25 07:21",
-    "ringkasan": "2. Konsesi Tambang Konsesi tambang adalah izin atau hak yang diberikan oleh pemerintah kepada pihak tertentu untuk melakukan kegiatan pertambangan di wilayah te...",
+    "ringkasan": "Konsesi Tambang Konsesi tambang adalah izin atau hak yang diberikan oleh pemerintah kepada pihak tertentu untuk melakukan kegiatan pertambangan di wilayah terte...",
     "buku": {
       "slug": "the-art-of-money",
       "judul": "The Art of Money"
@@ -49,11 +220,11 @@
   },
   {
     "id": 3,
-    "judul": "Financial Engineering",
+    "judul": "Apa Arti Financial Engineering",
     "slug": "financial-engineering",
     "kategori": "Bisnis",
     "tanggal_dibuat": "2026-06-24 10:56",
-    "ringkasan": "1. Financial Engineering Financial engineering adalah bidang yang menggabungkan keuangan, matematika, statistika, ekonomi, dan pemrograman untuk merancang, meng...",
+    "ringkasan": "Financial Engineering Financial engineering adalah bidang yang menggabungkan keuangan, matematika, statistika, ekonomi, dan pemrograman untuk merancang, mengana...",
     "buku": {
       "slug": "the-art-of-money",
       "judul": "The Art of Money"

@@ -1,5 +1,18 @@
 [
   {
+    "id": 3,
+    "judul": "BREATH",
+    "subjudul": "Cara Bernapas Dengan Benar",
+    "slug": "breath",
+    "penulis": "James Nestor",
+    "kategori": "Humaniora/Health",
+    "status_baca": "ingin_dibaca",
+    "gambar_url": "uploads/buku/breath.webp",
+    "tahun_terbit": 2022,
+    "ringkasan": "Tak ada yang lebih penting bagi kesehatan dan kesejahteraan kita selain bernapas: hirup udara, keluarkan, ulangi 25.000 kali sehari. Namun, seba gai suatu spesi...",
+    "tanggal_ditambahkan": "2026-06-25 01:06:18"
+  },
+  {
     "id": 2,
     "judul": "GRIT",
     "subjudul": "Kekuatan Passion & Kegigihan",
@@ -22,7 +35,7 @@
     "status_baca": "sedang_dibaca",
     "gambar_url": "uploads/buku/the-art-of-money.webp",
     "tahun_terbit": 2025,
-    "ringkasan": "Adakah yang Salah dengan Cara Kita Memperlakukan Uang Sehinnga Sulit Menjadi Kaya?",
+    "ringkasan": "Adakah yang Salah dengan Cara Kita Memperlakukan Uang Sehingga Sulit Menjadi Kaya?",
     "tanggal_ditambahkan": "2026-06-24 02:56:37"
   }
 ]
